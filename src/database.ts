@@ -1,8 +1,7 @@
-interface Reading {
-  // TODO: change this to contain whatever information is needed
-}
-
 // This is a fake database which stores data in-memory while the process is running
+
+import { Reading } from "./libs/types/Reading.type";
+
 // Feel free to change the data structure to anything else you would like
 const database: Record<string, Reading> = {};
 
@@ -19,4 +18,13 @@ export const addReading = (key: string, reading: Reading): Reading => {
  */
 export const getReading = (key: string): Reading | undefined => {
   return database[key];
+};
+
+/**
+ * Retrieve all readings from the database
+ */
+export const getAllReadings = (): Reading[] => {
+  const result = Object.values(database);
+
+  return result;
 };
